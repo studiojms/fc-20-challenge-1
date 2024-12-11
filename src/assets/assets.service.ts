@@ -6,14 +6,13 @@ import { PrismaService } from 'src/prisma/prisma/prisma.service';
 export class AssetsService {
   constructor(private prismaService: PrismaService) {}
 
-  create(createAssetDto: CreateAssetDto) {
-    console.log({ createAssetDto });
+  async create(createAssetDto: CreateAssetDto) {
     return this.prismaService.asset.create({
       data: createAssetDto,
     });
   }
 
-  findAll() {
+  async findAll() {
     return this.prismaService.asset.findMany();
   }
 }

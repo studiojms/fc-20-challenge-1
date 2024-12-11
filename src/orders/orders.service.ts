@@ -6,7 +6,7 @@ import { PrismaService } from 'src/prisma/prisma/prisma.service';
 export class OrdersService {
   constructor(private prismaService: PrismaService) {}
 
-  create(createOrderDto: CreateOrderDto) {
+  async create(createOrderDto: CreateOrderDto) {
     return this.prismaService.order.create({
       data: {
         status: 'PENDING',
@@ -16,7 +16,7 @@ export class OrdersService {
     });
   }
 
-  findAll() {
+  async findAll() {
     return this.prismaService.order.findMany({
       include: { Asset: true },
     });
